@@ -1,0 +1,38 @@
+[
+  {
+    "id": "p1",
+    "name": "Mountain Honey 500g",
+    "price": 12.5,
+    "stock": 8,
+    "type": "specialty",
+    "description": "Raw Victorian honey from alpine flora.",
+    "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800"
+  },
+  {
+    "id": "p2",
+    "name": "Artisan Sourdough",
+    "price": 6.9,
+    "stock": 14,
+    "type": "specialty",
+    "description": "Fresh baked loaf with a crunchy crust.",
+    "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?q=80&w=800"
+  },
+  {
+    "id": "p3",
+    "name": "Toilet Paper (8 pack)",
+    "price": 5.8,
+    "stock": 49,
+    "type": "daily",
+    "description": "Soft, strong and long.",
+    "image": "https://images.unsplash.com/photo-1584555613497-9e3dc5c7e169?q=80&w=800"
+  },
+  {
+    "id": "p4",
+    "name": "Jasmine Rice 5kg",
+    "price": 13,
+    "stock": 35,
+    "type": "daily",
+    "description": "Fragrant long-grain rice.",
+    "image": "https://images.unsplash.com/photo-1602173994037-8e3d4b6fa2a6?q=80&w=800"
+  }
+]

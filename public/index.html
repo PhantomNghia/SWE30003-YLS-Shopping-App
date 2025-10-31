@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Local Shop</title>
+  <link rel="stylesheet" href="/styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>Your Local Shop</h1>
+    <nav>
+      <button class="filter" data-cat="">All</button>
+      <button class="filter" data-cat="specialty">Specialty</button>
+      <button class="filter" data-cat="daily">Daily Necessities</button>
+      <input id="search" placeholder="Search products..." />
+    </nav>
+    <div id="cart-toggle">🛒 <span id="cart-count">0</span></div>
+    <div id="account">
+      <a href="/login.html" id="login-link">Login</a>
+      <span id="user-chip" class="badge" style="display:none;"></span>
+      <button id="logout-btn" style="display:none;">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="catalogue"></section>
+
+    <aside id="cart">
+      <h2>Shopping Cart</h2>
+      <div id="cart-items"></div>
+      <div id="cart-total"></div>
+      <button id="checkout">Checkout</button>
+    </aside>
+  </main>
+
+  <dialog id="checkout-dialog">
+    <form id="checkout-form" method="dialog">
+      <h3>Checkout</h3>
+      <label>Name <input name="name" required/></label>
+      <label>Phone <input name="phone" required/></label>
+      <label>Address Line <input name="line1" required/></label>
+      <label>City <input name="city" required/></label>
+      <label>Postcode <input name="postcode" required/></label>
+      <menu>
+        <button value="cancel">Cancel</button>
+        <button id="place-order" value="default">Place Order</button>
+      </menu>
+      <p id="checkout-status"></p>
+    </form>
+  </dialog>
+
+  <section id="order-tracker" hidden>
+    <h2>Order Tracker</h2>
+    <div id="order-status"></div>
+    <div id="shipment-status"></div>
+    <div id="receipt"></div>
+    <div id="stats"></div>
+  </section>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

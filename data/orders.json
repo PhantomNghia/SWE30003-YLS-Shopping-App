@@ -1,0 +1,167 @@
+[
+  {
+    "id": "AqZgaxc7qh",
+    "status": "SHIPPED",
+    "customer": {
+      "name": "Bob",
+      "phone": "0912266885"
+    },
+    "address": {
+      "line1": "No 45, Lane 32, Phan Van Truong Str, Cau Giay Dis",
+      "city": "Ha Noi",
+      "postcode": "100000",
+      "recipient": "Bob",
+      "phone": "0912266885"
+    },
+    "items": [
+      {
+        "productId": "p2",
+        "name": "Artisan Sourdough",
+        "price": 6.9,
+        "qty": 1
+      }
+    ],
+    "total": 6.9,
+    "createdAt": "2025-10-31T06:58:53.029Z",
+    "payment": {
+      "id": "HmqQPZob",
+      "method": "card",
+      "amount": 6.9,
+      "paidAt": "2025-10-31T06:58:53.036Z"
+    },
+    "receipt": {
+      "id": "ID0h1UsYBIA1",
+      "orderId": "AqZgaxc7qh",
+      "payer": "Bob",
+      "amount": 6.9,
+      "issuedAt": "2025-10-31T06:58:53.036Z"
+    },
+    "packaging": {
+      "type": "STANDARD",
+      "packedAt": "2025-10-31T06:58:53.041Z"
+    },
+    "shipment": {
+      "id": "_5EFvhSIxJ",
+      "courier": "DemoPost",
+      "tracking": "TRACK-CW0aYL",
+      "address": {
+        "line1": "No 45, Lane 32, Phan Van Truong Str, Cau Giay Dis",
+        "city": "Ha Noi",
+        "postcode": "100000",
+        "recipient": "Bob",
+        "phone": "0912266885"
+      },
+      "shippedAt": "2025-10-31T06:58:53.045Z"
+    }
+  },
+  {
+    "id": "N7cpCRJzES",
+    "status": "SHIPPED",
+    "customer": {
+      "name": "Bob",
+      "phone": "0912266885"
+    },
+    "address": {
+      "line1": "No 45, Lane 32, Phan Van Truong Str, Cau Giay Dis",
+      "city": "Ha Noi",
+      "postcode": "100000",
+      "recipient": "Bob",
+      "phone": "0912266885"
+    },
+    "items": [
+      {
+        "productId": "p1",
+        "name": "Mountain Honey 500g",
+        "price": 12.5,
+        "qty": 12
+      }
+    ],
+    "total": 150,
+    "createdAt": "2025-10-31T07:01:51.315Z",
+    "payment": {
+      "id": "8si_ieSC",
+      "method": "card",
+      "amount": 150,
+      "paidAt": "2025-10-31T07:01:51.318Z"
+    },
+    "receipt": {
+      "id": "qC9me3MNWM9a",
+      "orderId": "N7cpCRJzES",
+      "payer": "Bob",
+      "amount": 150,
+      "issuedAt": "2025-10-31T07:01:51.318Z"
+    },
+    "packaging": {
+      "type": "STANDARD",
+      "packedAt": "2025-10-31T07:01:51.319Z"
+    },
+    "shipment": {
+      "id": "TBx23w549b",
+      "courier": "DemoPost",
+      "tracking": "TRACK-jBiK4l",
+      "address": {
+        "line1": "No 45, Lane 32, Phan Van Truong Str, Cau Giay Dis",
+        "city": "Ha Noi",
+        "postcode": "100000",
+        "recipient": "Bob",
+        "phone": "0912266885"
+      },
+      "shippedAt": "2025-10-31T07:01:51.320Z"
+    }
+  },
+  {
+    "id": "9g7SfXC3x6",
+    "status": "SHIPPED",
+    "customer": {
+      "name": "Thanh Nghia Do",
+      "phone": "0436526267"
+    },
+    "address": {
+      "line1": "367 Burwood Road, Hawthorn VIC, Australia",
+      "city": "Hawthorn",
+      "postcode": "3122",
+      "recipient": "Thanh Nghia Do",
+      "phone": "0436526267"
+    },
+    "items": [
+      {
+        "productId": "p3",
+        "name": "Toilet Paper (8 pack)",
+        "price": 5.8,
+        "qty": 1
+      }
+    ],
+    "total": 5.8,
+    "createdAt": "2025-10-31T08:11:50.781Z",
+    "payment": {
+      "id": "ZVcW26M0",
+      "method": "card",
+      "amount": 5.8,
+      "paidAt": "2025-10-31T08:11:50.794Z"
+    },
+    "receipt": {
+      "id": "KQeMLlR9emqB",
+      "orderId": "9g7SfXC3x6",
+      "payer": "Thanh Nghia Do",
+      "amount": 5.8,
+      "issuedAt": "2025-10-31T08:11:50.794Z"
+    },
+    "packaging": {
+      "type": "STANDARD",
+      "packedAt": "2025-10-31T08:11:50.797Z"
+    },
+    "shipment": {
+      "id": "1oP1HEdBOx",
+      "courier": "DemoPost",
+      "tracking": "TRACK-Elh7M5",
+      "address": {
+        "line1": "367 Burwood Road, Hawthorn VIC, Australia",
+        "city": "Hawthorn",
+        "postcode": "3122",
+        "recipient": "Thanh Nghia Do",
+        "phone": "0436526267"
+      },
+      "shippedAt": "2025-10-31T08:11:50.800Z"
+    }
+  }
+]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – Your Local Shop</title>
+  <link rel="stylesheet" href="/styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>Login</h1>
+  </header>
+  <main>
+    <form id="login-form" class="auth-container">
+        <h2>Login</h2>
+        <label>Email <input name="email" type="email" required/></label>
+        <label>Password <input name="password" type="password" required/></label>
+        <button type="submit">Login</button>
+        <p id="login-status" style="color:#f87171;"></p>
+    </form>
+    <p class="auth-link">
+        Don't have an account? <a href="/register.html">Create New Account</a>
+    </p>
+  </main>
+  <script type="module" src="/auth.js"></script>
+</body>
+</html>
