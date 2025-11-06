@@ -24,7 +24,7 @@ if (lf) {
     const res = await API.login(fd.get('email'), fd.get('password'));
     if (!res.ok) return document.querySelector('#login-status').textContent = res.error || 'Login failed';
     localStorage.setItem('authToken', res.token);
-    localStorage.setItem('authUser', JSON.stringify(res.user));
+    localStorage.setItem('authUser', JSON.stringify(res.user)); // res.user now includes role
     window.location.href = '/';
   });
 }
