@@ -1,42 +1,15 @@
-if (!authToken()) {
-  window.location.href = '/login.html';
-}
-
-// --- cart helpers (same key/shape as checkout.js) ---
-const CART_KEY = 'cart';
-function getCart() {
-  try { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); }
-  catch { return []; }
-}
-function setCart(items) {
-  localStorage.setItem(CART_KEY, JSON.stringify(items));
-  // update the little cart bubble on the header
-  const count = items.reduce((n, it) => n + (Number(it.qty||1)), 0);
-  const cc = document.getElementById('cart-count');
-  if (cc) cc.textContent = count;
-}
-function addToCart(p) {
-  const items = getCart();
-  const idx = items.findIndex(x => String(x.id) === String(p.id));
-  if (idx >= 0) {
-    items[idx].qty = Math.min(999, (items[idx].qty||1) + 1);
-  } else {
-    items.push({
-      id: p.id,
-      name: p.name,
-      price: Number(p.price||0),
-      image: p.image || '/placeholder.png',
-      variant: p.category || 'Default',
-      qty: 1,
-      selected: true
-    });
-  }
-  setCart(items);
-}
-//end --- cart helpers ---//
-
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
+
+// --- Checkout: open dedicated page ---
+const checkoutLink = document.querySelector('#checkout-link') || document.querySelector('#checkout-btn');
+if (checkoutLink) {
+  checkoutLink.addEventListener('click', (e) => {
+    // If this was a <button>, prevent any old inline checkout logic
+    if (checkoutLink.tagName === 'BUTTON') e.preventDefault();
+    window.location.href = '/checkout.html';
+  });
+}
 
 let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 const saveCart = () => localStorage.setItem('cart', JSON.stringify(cart));

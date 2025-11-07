@@ -1,74 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Checkout</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    /* Cart/Temu-like layout — scoped to this page */
-    .cart-page { max-width: 960px; margin: 0 auto; padding: 16px; }
-    .cart-header { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
-    .cart-header h1 { font-size: 1.4rem; margin: 0; }
-    .cart-list { display:flex; flex-direction:column; gap:12px; }
-    .cart-item {
-      display:grid;
-      grid-template-columns: 28px 96px 1fr auto;
-      gap:12px; align-items:center; padding:12px; border:1px solid #eee; border-radius:10px; background:#fff;
-    }
-    .cart-check { display:flex; justify-content:center; }
-    .cart-img { width:96px; height:96px; object-fit:cover; border-radius:8px; border:1px solid #eee; }
-    .cart-main { display:flex; flex-direction:column; gap:6px; }
-    .cart-title { font-size:0.95rem; font-weight:600; line-height:1.2; }
-    .cart-meta { display:flex; gap:8px; flex-wrap:wrap; }
-    .badge { border:1px solid #ddd; border-radius:999px; padding:2px 8px; font-size:0.78rem; }
-    .cart-price { font-weight:700; }
-    .cart-qty { display:flex; align-items:center; gap:8px; }
-    .qty-btn { width:28px; height:28px; border-radius:6px; border:1px solid #ddd; background:#fff; cursor:pointer; }
-    .qty { min-width:24px; text-align:center; }
-    .cart-footer {
-      position:sticky; bottom:0; left:0; right:0;
-      background:#fff; border-top:1px solid #eee; padding:12px;
-    }
-    .cart-footer-inner { max-width:960px; margin:0 auto; display:flex; align-items:center; gap:12px; }
-    .all-row { display:flex; align-items:center; gap:8px; }
-    .total-row { margin-left:auto; font-weight:700; }
-    .checkout-btn {
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:10px 18px; font-weight:700; border:none; border-radius:999px; background:#ff7a00; color:#fff; cursor:pointer;
-    }
-    .checkout-btn:disabled { opacity:0.6; cursor:not-allowed; }
-    /* small screens */
-    @media (max-width:600px){
-      .cart-item { grid-template-columns: 24px 80px 1fr auto; }
-      .cart-img { width:80px; height:80px; }
-    }
-  </style>
+  <meta charset="utf-8" />
+  <title>Checkout — Your Local Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="/styles.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="cart-page">
-    <div class="cart-header">
-      <a href="/index.html" aria-label="Back to shop">←</a>
-      <h1>Cart</h1>
-    </div>
+  <header>
+    <h1>Checkout</h1>
+    <nav><a href="/index.html">← Continue shopping</a></nav>
+  </header>
 
-    <div id="cart-list" class="cart-list"></div>
-  </div>
+  <main id="checkout-root">
+    <!-- Left: cart preview with images -->
+    <section>
+      <h2>Your items</h2>
+      <div id="checkout-items"></div>
 
-  <div class="cart-footer">
-    <div class="cart-footer-inner">
-      <label class="all-row">
-        <input type="checkbox" id="select-all">
-        <span>All</span>
-      </label>
-      <div class="total-row">
-        Total <span id="total">$0.00</span>
+      <div class="totals">
+        <div class="row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+        <div class="row"><span>Shipping</span><strong id="shipping">$0.00</strong></div>
+        <div class="row"><span>Tax (10% GST)</span><strong id="tax">$0.00</strong></div>
+        <div class="row total"><span>Total</span><strong id="grand-total">$0.00</strong></div>
       </div>
-      <button id="checkout" class="checkout-btn" disabled>Checkout (0)</button>
-    </div>
-  </div>
+    </section>
 
-  <script src="/auth.js"></script>
-  <script src="/checkout.js"></script>
+    <!-- Right: shipping/contact form + submit -->
+    <section id="checkout-pane">
+      <form id="checkout-form" autocomplete="on">
+        <h3>Shipping details</h3>
+        <div class="grid2">
+          <label>Full name<input name="name" required></label>
+          <label>Phone<input name="phone" required></label>
+        </div>
+        <label>Address line 1<input name="line1" required></label>
+        <label>Address line 2<input name="line2"></label>
+        <div class="grid3">
+          <label>City<input name="city" required></label>
+          <label>State<input name="state"></label>
+          <label>Postcode<input name="postcode" required></label>
+        </div>
+        <button id="place-order" type="submit" class="btn-primary">Place order & pay</button>
+        <p id="checkout-status" class="muted"></p>
+      </form>
+
+      <!-- Order tracker & receipt (shown after success) -->
+      <section id="order-tracker" hidden>
+        <div id="order-status"></div>
+        <div id="shipment-status"></div>
+        <div id="receipt"></div>
+        <div id="stats"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="/checkout.js" defer></script>
 </body>
 </html>

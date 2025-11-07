@@ -31,7 +31,9 @@
       <h2>Shopping Cart</h2>
       <div id="cart-items"></div>
       <div id="cart-total"></div>
-      <a href="/checkout.html"><button id="checkout-btn">Checkout</button></a>
+      <!--<button id="checkout">Checkout</button>-->
+      <button id="view-cart">Cart (<span id="cart-count">0</span>)</button>
+      <a id="checkout-link" href="/checkout.html" class="btn-primary">Checkout</a>
     </aside>
   </main>
 
@@ -43,11 +45,11 @@
       <label>Address Line <input name="line1" required/></label>
       <label>City <input name="city" required/></label>
       <label>Postcode <input name="postcode" required/></label>
-      <menu>
-        <button value="cancel">Cancel</button>
-        <button id="place-order" value="default">Place Order</button>
-      </menu>
-      <p id="checkout-status"></p>
+        <menu>
+            <button type="button" value="cancel">Cancel</button>
+            <button id="place-order" type="submit">Place Order</button>
+        </menu>
+        <p id="checkout-status"></p>
     </form>
   </dialog>
 
@@ -60,5 +62,6 @@
   </section>
 
   <script src="/app.js" type="module"></script>
+  <script src="/checkout.js" type="module"></script>
 </body>
 </html>

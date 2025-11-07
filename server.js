@@ -33,23 +33,6 @@ try {
   console.error('⚠️ Category migration failed (continuing anyway):', e);
 }
 
-// server.js  (after `import db from './db.js';` and after your other PRAGMA/migrations)
-try {
-  db.prepare(`
-    CREATE TABLE IF NOT EXISTS user_profiles (
-      user_id INTEGER PRIMARY KEY,
-      name TEXT,
-      phone TEXT,
-      line1 TEXT,
-      city TEXT,
-      postcode TEXT,
-      updated_at TEXT DEFAULT CURRENT_TIMESTAMP
-    )
-  `).run();
-} catch (e) {
-  console.error('user_profiles migration failed:', e);
-}
-
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -60,9 +43,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.redirect('/login.html');
-});
 // --- In-memory store (persisted minimally via JSON files for demo) ---
 const DATA_DIR = path.join(__dirname, 'data');
 
@@ -118,42 +98,6 @@ function authMiddleware(req, _res, next) {
 }
 
 app.use(authMiddleware);
-
-// GET my profile
-app.get('/api/me/profile', requireAuth, (req, res) => {
-  const uid = req.user.user_id || req.user.id; // depends on your JWT payload
-  const row = db.prepare(`
-    SELECT user_id, name, phone, line1, city, postcode
-    FROM user_profiles WHERE user_id = ?
-  `).get(uid);
-  res.json(row || null);
-});
-
-// PUT my profile (create or update)
-app.put('/api/me/profile', requireAuth, (req, res) => {
-  const uid = req.user.user_id || req.user.id;
-  const { name, phone, line1, city, postcode } = req.body || {};
-
-  if (!name || !phone || !line1 || !city || !postcode) {
-    return res.status(400).json({ error: 'MISSING_FIELDS' });
-  }
-
-  const exists = db.prepare(`SELECT 1 FROM user_profiles WHERE user_id = ?`).get(uid);
-  if (exists) {
-    db.prepare(`
-      UPDATE user_profiles
-         SET name=@name, phone=@phone, line1=@line1, city=@city, postcode=@postcode, updated_at=CURRENT_TIMESTAMP
-       WHERE user_id=@uid
-    `).run({ uid, name, phone, line1, city, postcode });
-  } else {
-    db.prepare(`
-      INSERT INTO user_profiles (user_id, name, phone, line1, city, postcode)
-      VALUES (@uid, @name, @phone, @line1, @city, @postcode)
-    `).run({ uid, name, phone, line1, city, postcode });
-  }
-
-  res.json({ ok: true });
-});
 
 function requireAdmin(req, res, next) {
   if (!req.user || req.user.role !== 'admin') {

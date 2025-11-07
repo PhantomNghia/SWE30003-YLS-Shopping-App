@@ -77,3 +77,114 @@ footer { color:#94a3b8; font-size:12px; }
   text-align: center;
   margin-top: 6px;
 }
+
+/* --- Checkout page layout --- */
+#checkout-root {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* Mobile & small screen: stack panels vertically */
+@media (max-width: 900px) {
+  #checkout-root {
+    grid-template-columns: 1fr;
+  }
+  #checkout-pane {
+    width: 100%;
+  }
+}
+
+#checkout-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkout-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.checkout-item .thumb {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  background: #f3f3f3;
+}
+
+.checkout-item .name { font-weight: 600; color: #7521e3; }
+.checkout-item .meta { font-size: 0.9rem; color: #7521e3; }
+.checkout-item .line-total { font-weight: 700; }
+
+.checkout-item {
+  background: #fff;
+}
+
+.checkout-item .name {
+  font-size: 1rem;
+}
+
+.checkout-item .line-total {
+  font-size: 1rem;
+}
+
+.totals .row {
+  display: flex; justify-content: space-between;
+  margin: 6px 0;
+}
+.totals .total {
+  border-top: 1px dashed #ddd; padding-top: 10px; margin-top: 10px;
+}
+
+#checkout-pane {
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 20px 24px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+#checkout-pane h2,
+#checkout-pane h3 {
+  color: #7521e3 !important;  /* high contrast on white */
+  font-weight: 700;
+}
+
+#checkout-form input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#checkout-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7521e3;
+}
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+#order-tracker,
+#order-status,
+#shipment-status,
+#receipt,
+#stats {
+  color: #333 !important;
+}
