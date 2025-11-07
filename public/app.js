@@ -17,7 +17,13 @@ function renderAuthUI() {
   const chip = document.querySelector('#user-chip');
   const loginLink = document.querySelector('#login-link');
   const logoutBtn = document.querySelector('#logout-btn');
+  const adminLink = document.querySelector('#admin-link');
+  if (adminLink) {
+    const user = authUser();
+    adminLink.style.display = user && user.role === 'admin' ? 'inline-block' : 'none';
+  }
   if (!chip || !loginLink || !logoutBtn) return;
+  if (user && user.role === 'admin') chip.textContent = `Hi, ${user.name} (Admin)`;
 
   if (user) {
     chip.textContent = `Hi, ${user.name}`;
@@ -188,4 +194,48 @@ function wireUI(){
   }
 }
 
+function currentFilters() {
+  const searchEl = document.querySelector('#search');
+  const q = (searchEl?.value || '').trim();
+  const active = document.querySelector('.filter.active');
+  const cat = active?.dataset.cat || ''; // '' means All
+
+  const params = {};
+  if (q) params.q = q;
+  if (cat) params.category = cat; // only include if not All
+  return params;
+}
+
+function wireFilters() {
+  // Category buttons
+  document.querySelectorAll('button.filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('button.filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCatalogue(currentFilters());
+    });
+  });
+
+  // Mark "All" as active by default
+  const first = document.querySelector('button.filter[data-cat=""]');
+  if (first) first.classList.add('active');
+
+  // Search box (Enter + live typing)
+  const search = document.querySelector('#search');
+  if (search) {
+    const run = () => renderCatalogue(currentFilters());
+    search.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        run();
+      }
+    });
+    search.addEventListener('input', () => {
+      // optional: instant filtering as you type
+      run();
+    });
+  }
+}
+
 wireUI();
+wireFilters();
